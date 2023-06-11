@@ -1,47 +1,25 @@
 import React from 'react';
 
-// import { ModalGallery } from '../Modal/Modal.jsx';
-import { ImageGalleryItem } from "../ImageGalleryItem/ImageGalleryItem";
-import {Section, GalleryList} from '../ImageGallery/ImageGallery.styled.jsx';
-export function ImageGallery({images}){
-    return(
-        <Section>
-            <GalleryList>
-{images.map(({webformatURL,id, tags}) => {
-    return(
-        <ImageGalleryItem
-        key={id}
-        webformatURL={webformatURL}
-        alt={tags} />
-        // <li key={id} className={css.gallery_item}>
-        // <img src={webformatURL} alt=""className={css.gallery_img} />
-        // </li>
-    )
-})}
-</GalleryList>
-{/* <ul className={css.gallery_list}>
-{images.map(({webformatURL, largeImageURL, id}) =>{
-    return(
-        <li key={id} className={css.gallery_item}>
-        <img src={webformatURL} alt=""className={css.gallery_img} />
-        </li>
-    )
-})}
-</ul>  */}
+import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import { Section, GalleryList } from '../ImageGallery/ImageGallery.styled.jsx';
 
-{/* <ul className={css.gallery_list}>
-{images.map(({webformatURL, largeImageURL, id}) => {
-    return(
-        <ImageGalleryItem
-        key={id}
-        url={webformatURL}
-    />
-    )
-})}
+export function ImageGallery({ images, onClick }) {
+  return (
+    <Section>
+      <GalleryList>
+        {images.map(image => {
+          return (
+            <ImageGalleryItem
+              onImgClick={onClick}
+              key={image.id}
+              image={image}
+            />
 
-</ul> */}
-        </Section>
-    )
+          );
+        })}
+      </GalleryList>
+    </Section>
+  );
 }
 
 //==========================================
@@ -69,7 +47,7 @@ export function ImageGallery({images}){
 //                   src={webformatURL}
 //                   alt=""
 //                   className={css.gallery_img}
-          
+
 //                 />
 //            {isModalOpen && <ModalGallery
 //                   isModalOpen={this.isModalOpen}
@@ -81,7 +59,7 @@ export function ImageGallery({images}){
 //             );
 //           })}
 //         </ul>
-      
+
 //       </section>
 //     );
 //   }

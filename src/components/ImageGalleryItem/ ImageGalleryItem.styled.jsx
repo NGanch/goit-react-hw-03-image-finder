@@ -13,7 +13,7 @@ box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.1
     0px 3px 9px #40e6e1; 
 }
 `;
-export const GalleryImg = styled.img`
+export const Image = styled.img`
 display: block;
 height: 100%;
 width: 100%;

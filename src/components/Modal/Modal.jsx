@@ -1,121 +1,97 @@
 
 import React from 'react';
+import { Image } from '../Modal/Modal.styled';
 import Modal from 'react-modal';
-// import{
-//   disableBodyScroll,
-//   enableBodyScroll,
-//   clearAllBodyScrollLocks,
-// } from 'body-scroll-lock';
+
+import{
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 const customStyles = {
   content: {
+    width: '700px',
+    height: '400px',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
+    padding: '0',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor: 'rgb(12 12 12 / 75%)',
   },
 };
 
 Modal.setAppElement('#root');
- export const ModalGallery =({isModalOpen, closeModal, largeImageURL, tags}) => {
+ //=================================================
+ export class ModalGallery extends React.Component {
+
+  componentWillUnmount(){ 
+    clearAllBodyScrollLocks();
+  }
+
+  render(){
+    // const {isModalOpen} = this.state;
+    const {largeImageURL,tagsImg, onClose, isModalOpen} = this.props;
+   
     return(
             <Modal
               isOpen={isModalOpen}
-              onRequestClose={closeModal}
+              // onClick={this.openModal}
               style={customStyles}
               contentLabel="Example Modal"
+              onAfterOpen={() => disableBodyScroll(document)}
+              onAfterClose={() => enableBodyScroll(document)}
+              onRequestClose={onClose}
             >
-          <img src={largeImageURL} alt={tags}/>
-           <h1>Hello</h1>
+              <Image src={largeImageURL} alt={tagsImg}/>
+              
             </Modal>
-    
+   
         )
   }
-// export class ModalGallery extends React.Component {
-//   state = {
-//     isModalOpen: false,
-//   }
-//   openModal = () => this.setState({isModalOpen: true})
+ }
 
-//   closeModal = () => this.setState({isModalOpen: false})
-
-//   componentWillUnmount(){
-//     clearAllBodyScrollLocks();
-//   }
-
-//   render(){
-//     const {isModalOpen} = this.state;
-//     const {images} = this.props;
-//     return(
-
-//       <div>
-//             <button onClick={this.openModal}>open</button>
-//             <Modal
-//               isOpen={isModalOpen}
-          
-//               onRequestClose={this.closeModal}
-//               style={customStyles}
-//               contentLabel="Example Modal"
-//               onAfterOpen={() => disableBodyScroll(document)}
-//               onAfterClose={() => enableBodyScroll(document)}
-//             >
-          
-//               {/* <button onClick={this.closeModal}>close</button> */}
-//               {images.map(({webformatURL,id, largeImageURL, tags}) => {
-//               return(
-          
-            
-//             <li key={id}  onClick={this.openModal}>
-//         <img src={largeImageURL} alt={tags} onClick={this.closeModal}/>
-//         {/* {isModalOpen && <ModalGallery
-//             // isModalOpen={this.isModalOpen}
-//             // closeModal={this.closeModal}
-//             // largeImageURL={largeImageURL}
-//             // tags={tags}
-//             />} */}
-//         </li>
-// )
-// })}
-              
-//             </Modal>
-//           </div>
-//         )
-//   }
-
-//  }
  //=================================================
-//  export class ModalGallery extends React.Component {
-//   state = {
-//     isModalOpen: false,
-//   }
-//   openModal = () => this.setState({isModalOpen: true})
 
-//   closeModal = () => this.setState({isModalOpen: false})
+// метод
+// export class ModalGallery extends React.Component {
+
+// componentDidMount(){
+//   window.addEventListener('keydown', this.onKeydown);
+//   document.body.style.overflow = 'hidden';
+// }
 
 //   componentWillUnmount(){
-//     clearAllBodyScrollLocks();
+//     window.removeEventListener('keydown', this.onKeydown);
+//     // clearAllBodyScrollLocks();
 //   }
 
+// onKeydown = event => {
+//   if(event.code === 'Escape'){
+//     this.props.onClose();
+//   }
+// };
+// onBackdropClick = event => {
+//   if(event.currentTarget !== event.target){
+//     this.props.onClose();
+//   }
+// }
 //   render(){
-//     const {isModalOpen} = this.state;
+    
+//     const {largeImageURL,tagsImg } = this.props;
+//     console.log(largeImageURL)
+//     console.log(tagsImg)
 //     return(
 
 //       <div>
-//             <button onClick={this.openModal}>open</button>
 //             <Modal
-//               isOpen={isModalOpen}
-          
-//               onRequestClose={this.closeModal}
-//               style={customStyles}
-//               contentLabel="Example Modal"
-//               onAfterOpen={() => disableBodyScroll(document)}
-//               onAfterClose={() => enableBodyScroll(document)}
+//              onClick={this.onBackdropClick}
+
+      
 //             >
-          
-//               <button onClick={this.closeModal}>close</button>
-//               <div>I am a modal</div>
-              
+//         <img src={largeImageURL} alt={tagsImg}/>
 //             </Modal>
 //           </div>
 //         )
@@ -123,4 +99,3 @@ Modal.setAppElement('#root');
 
 //  }
 //==============================================
-

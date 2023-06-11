@@ -1,12 +1,16 @@
 import {
   GalleryItem,
-  GalleryImg,
+  Image,
 } from '../ImageGalleryItem/ ImageGalleryItem.styled';
 
-export function ImageGalleryItem({ webformatURL, key, alt }) {
+export function ImageGalleryItem({image, onImgClick }) {
   return (
-    <GalleryItem key={key}>
-      <GalleryImg src={webformatURL} alt={alt} />
+    <GalleryItem>
+      <Image onClick={()=>{
+        onImgClick(image.largeImageURL, image.tags);
+      }}
+      src={image.webformatURL}
+       alt={image.tags} />
     </GalleryItem>
   );
 }
