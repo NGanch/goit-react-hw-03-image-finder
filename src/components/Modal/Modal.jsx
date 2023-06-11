@@ -16,8 +16,7 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
   },
 };
-const li = document.querySelectorAll('#id')
-console.log(li)
+
 Modal.setAppElement('#root');
  export const ModalGallery =({isModalOpen, closeModal, largeImageURL, tags}) => {
     return(

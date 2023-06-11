@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from '../components/ImageGallery/ImageGallery';
-import { ModalGallery } from '../components/Modal/Modal';
+// import { ModalGallery } from '../components/Modal/Modal';
 
 import { Button } from './Button/Button.styled';
 
@@ -26,8 +26,6 @@ export class App extends React.Component {
 
 abortCtrl;
    //------------------------------
-
-
 
 //===================================
  componentDidUpdate(_, prevState) {
@@ -133,15 +131,7 @@ theme: "light",
   }
 }
 
- {/* <ul className={css.gallery_list}>
-     {images.map(({webformatURL, largeImageURL, id}) =>{
-         return(
-             <li key={id} className={css.gallery_item}>
-             <img src={webformatURL} alt=""className={css.gallery_img} />
-             </li>
-         )
-     })}
-     </ul>   */}
+
 
 
      //    async componentDidMount(){

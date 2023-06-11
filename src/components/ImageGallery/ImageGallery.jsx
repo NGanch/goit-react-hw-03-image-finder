@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ModalGallery } from '../Modal/Modal.jsx';
+// import { ModalGallery } from '../Modal/Modal.jsx';
 import { ImageGalleryItem } from "../ImageGalleryItem/ImageGalleryItem";
 import {Section, GalleryList} from '../ImageGallery/ImageGallery.styled.jsx';
 export function ImageGallery({images}){
